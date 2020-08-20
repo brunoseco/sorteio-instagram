@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.1209
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorteio.Instagram", "ConsoleApp1\Sorteio.Instagram.csproj", "{383C88D7-E34C-437A-B58C-75061A859198}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Sorteio.Instagram", "Sorteio.Intagram\Sorteio.Instagram.csproj", "{00A919D2-48A4-4C86-B3FA-2EEE60669239}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{383C88D7-E34C-437A-B58C-75061A859198}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{383C88D7-E34C-437A-B58C-75061A859198}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{383C88D7-E34C-437A-B58C-75061A859198}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{383C88D7-E34C-437A-B58C-75061A859198}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00A919D2-48A4-4C86-B3FA-2EEE60669239}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00A919D2-48A4-4C86-B3FA-2EEE60669239}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00A919D2-48A4-4C86-B3FA-2EEE60669239}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00A919D2-48A4-4C86-B3FA-2EEE60669239}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
