@@ -1,7 +1,7 @@
 
 # Comentários automáticos no Instagram
 
-Realize a configuração necessário da sua conta
+Realize a configuração necessário da sua conta, abra o arquivo config.txt
 
 POST_ID=
 
@@ -17,4 +17,6 @@ SEGUNDO_ESPERA_PAGINA=3
 
 ARROBAS=@amigo_1,@amigo_2,@amigo_3
 
-Desenvolvimento em Asp.Net Core e Selenium para fins de estudo
+Os resultados serão escritos em result.txt
+
+## Desenvolvimento em Asp.Net Core e Selenium para fins de estudo
