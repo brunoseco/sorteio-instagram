@@ -22,15 +22,30 @@ namespace ConsoleApp1
         static string[] _arrobas;
 
         static string _basePath = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+        static string _pathResult = Path.Combine(_basePath, @"result.txt");
 
         static void Main(string[] args)
         {
             ConfiguraValores();
 
-            var path = Path.Combine(_basePath, @"result.txt");
-            var driver = new ChromeDriver(_basePath);
 
-            var total = 0;
+            try
+            {
+                var total = File.ReadAllLines(_pathResult).Count();
+
+                ExecutaProcesso(total++, 1);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            Console.ReadLine();
+        }
+
+        private static void ExecutaProcesso(int total, int tentativa)
+        {
+            var driver = new ChromeDriver(_basePath);
 
             try
             {
@@ -57,27 +72,38 @@ namespace ConsoleApp1
 
                     var comentario = RealizaComentario(driver);
                     var result = $"{total.ToString()} - {DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")} > {comentario}";
-                    File.AppendAllLines(path, new List<string> { result });
+                    File.AppendAllLines(_pathResult, new List<string> { result });
                     Console.WriteLine(result);
 
                     Thread.Sleep(_segundosEsperaPagina);
 
                     driver.Navigate().Refresh();
 
-                    Thread.Sleep(new Random().Next(_segundosEsperaPagina, _segundosEsperaComentario));
+                    var segundosEspera = new Random().Next(_segundosEsperaComentario / 2, _segundosEsperaComentario);
+                    Console.WriteLine($"-- Aguardando {segundosEspera / 1000} segundos");
+                    Thread.Sleep(segundosEspera);
                 }
-
             }
             catch (Exception ex)
             {
-                throw ex;
-            }
-            finally
-            {
                 driver.Close();
                 driver.Quit();
-            }
 
+                var tempoEspera = 60000 * tentativa;
+                Thread.Sleep(tempoEspera);
+                Console.WriteLine($">> Ocorreu um erro ({tentativa}), aguardando {tempoEspera / 1000} segundos");
+
+                tentativa++;
+
+                if (tentativa <= 10)
+                {
+                    _segundosEsperaComentario += 5000;
+                    _segundosEsperaPagina += 1000;
+                    ExecutaProcesso(total, tentativa);
+                }
+
+                throw ex;
+            }
         }
 
         private static void ConfiguraValores()
@@ -152,7 +178,7 @@ namespace ConsoleApp1
             foreach (var item in texto)
             {
                 element.SendKeys(item.ToString());
-                Thread.Sleep(new Random().Next(100, 1000) / 30);
+                Thread.Sleep(new Random().Next(100, 700) / 30);
             }
         }
     }
